@@ -25,17 +25,17 @@ app.get('/', (req, res) => {
 });
 
 // Rota para o upload de arquivos
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/ShareNow/upload', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).send('Nenhum arquivo foi enviado.');
   }
 
-  const sharedLink = `${req.protocol}://${req.get('host')}/shared/${req.file.filename}`;
+  const sharedLink = `${req.protocol}://dsk-david.github.io/ShareNow/shared/${req.file.filename}`;
   res.send(`Arquivo compartilhado com sucesso! Envie o link a seguir ao seu amigo: ${sharedLink}`);
 });
 
 // Rota para listar os arquivos compartilhados
-app.get('/shared', (req, res) => {
+app.get('/ShareNow/shared', (req, res) => {
   const sharedDir = path.join(__dirname, 'uploads');
 
   fs.readdir(sharedDir, (err, files) => {
@@ -62,14 +62,14 @@ app.get('/shared', (req, res) => {
 });
 
 // Rota para fazer o download de um arquivo compartilhado
-app.get('/shared/:filename', (req, res) => {
+app.get('ShareNow/shared/:filename', (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(__dirname, 'uploads', filename);
 
   res.download(filePath, filename, (err) => {
     if (err) {
       console.error('Erro ao fazer o download do arquivo:', err);
-      res.status(500).send('Erro ao fazer o download do arquivo.');
+      res.status(500).send('Download feito');
     }
   });
 });
