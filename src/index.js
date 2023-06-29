@@ -21,7 +21,7 @@ app.use(express.static('public'));
 
 // Rota principal para renderizar o formulário de upload
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 // Rota para o upload de arquivos
