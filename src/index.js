@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // Rota para o upload de arquivos
-app.post('/ShareNow/upload', upload.single('file'), (req, res) => {
+app.post('/upload', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).send('Nenhum arquivo foi enviado.');
   }
@@ -35,7 +35,7 @@ app.post('/ShareNow/upload', upload.single('file'), (req, res) => {
 });
 
 // Rota para listar os arquivos compartilhados
-app.get('/ShareNow/shared', (req, res) => {
+app.get('/shared', (req, res) => {
   const sharedDir = path.join(__dirname, 'uploads');
 
   fs.readdir(sharedDir, (err, files) => {
@@ -62,7 +62,7 @@ app.get('/ShareNow/shared', (req, res) => {
 });
 
 // Rota para fazer o download de um arquivo compartilhado
-app.get('ShareNow/shared/:filename', (req, res) => {
+app.get('shared/:filename', (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(__dirname, 'uploads', filename);
 
