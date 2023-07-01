@@ -62,7 +62,7 @@ app.get('/ShareNow/shared', (req, res) => {
 });
 
 // Rota para fazer o download de um arquivo compartilhado
-app.get('ShareNow/shared/:filename', (req, res) => {
+app.get('shared/:filename', (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(__dirname, 'uploads', filename);
 
