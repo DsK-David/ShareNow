@@ -30,7 +30,7 @@ app.post('/ShareNow/upload', upload.single('file'), (req, res) => {
     return res.status(400).send('Nenhum arquivo foi enviado.');
   }
 
-  const sharedLink = `${req.protocol}://share-now-wheat.vercel.app/shared/${req.file.filename}`;
+  const sharedLink = `${req.protocol}//sharnow.onrender.com/ShareNow/shared/${req.file.filename}`;
   res.send(`Arquivo compartilhado com sucesso! Envie o link a seguir ao seu amigo: ${sharedLink}`);
 });
 
